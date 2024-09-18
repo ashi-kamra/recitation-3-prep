@@ -45,8 +45,8 @@ export default class SessioningConcept {
   }
 
   isLoggedOut(session: SessionDoc){
-    if (session.user !== undefined) {
-      throw new NotAllowedError("Must be logged out before logging in again");
+    if (session.user !== undefined) { //if they haven't logged out before hand. i.e their username is undefined.
+      throw new NotAllowedError("Must be logged out before logging in again.");
     }
   }
 }
