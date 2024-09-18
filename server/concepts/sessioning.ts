@@ -1,5 +1,5 @@
 import { SessionData } from "express-session";
-import { UnauthenticatedError } from "./errors";
+import { NotAllowedError, UnauthenticatedError } from "./errors";
 
 export type SessionDoc = SessionData;
 
@@ -27,7 +27,7 @@ export default class SessioningConcept {
     if (session.user === undefined){
       session.user = username;
     } else {
-      console.log("Must log out before logging in again")
+      throw new NotAllowedError("Must log out before logging in again")
     }
      
   }
