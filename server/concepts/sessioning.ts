@@ -24,12 +24,11 @@ export default class SessioningConcept {
     // Hint: Take a look at how the "end" function makes sure the user is logged in. Keep in mind that a
     // synchronization like starting a session should just consist of a series of actions that may throw
     // exceptions and should not have its own control flow.
-    if (session.user === undefined){
-      session.user = username;
+    if (session.user != undefined){
+      throw new NotAllowedError("Must log out before logging in again.")
     } else {
-      throw new NotAllowedError("Must log out before logging in again")
+      session.user = username;
     }
-     
   }
 
   end(session: SessionDoc) {
